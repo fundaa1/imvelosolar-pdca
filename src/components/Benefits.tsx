@@ -8,28 +8,32 @@ const benefits = [
         title: 'Maximize Energy Production',
         description: "Regular maintenance ensures your solar panels operate at peak efficiency, maximizing your energy output.",
         value: '25%',
-        color: 'text-yellow-500'
+        width: '25%',
+        color: 'text-yellow-500', barColor: 'bg-yellow-500'
     },
     {
         icon: DollarSign,
         title: 'Extend System Lifespan',
         description: "Regular maintenance can add years to your system's operational life, protecting your investment.",
         value: '5-10 years',
-        color: 'text-green-500'
+        width: '100%',
+        color: 'text-green-500', barColor: 'bg-green-500'
     },
     {
         icon: Clock,
         title: 'Prevent Costly Repairs',
         description: "Early detection of issues through maintenance can prevent expensive repairs down the line.",
         value: '50%',
-        color: 'text-blue-500'
+        width: '50%',
+        color: 'text-blue-500', barColor: 'bg-blue-500'
     },
     {
         icon: Shield,
         title: 'Maintain Warranty Coverage',
         description: "Regular maintenance is often required to keep your system's warranty valid.",
         value: '100%',
-        color: 'text-purple-500'
+        width: '100%',
+        color: 'text-purple-500', barColor: 'bg-purple-500'
     }
 ];
 
@@ -68,9 +72,9 @@ const Benefits: React.FC = () => {
                                 <div className="ml-4 flex-1 h-2 bg-gray-200 rounded-full overflow-hidden">
                                     <motion.div
                                         initial={{ width: 0 }}
-                                        whileInView={{ width: '100%' }}
+                                        whileInView={{ width: benefit.width }}
                                         transition={{ duration: 1, delay: index * 0.2 }}
-                                        className={`h-full ${benefit.color.replace('text-', 'bg-')}`}
+                                        className={`h-full ${benefit.barColor}`}
                                     />
                                 </div>
                             </div>

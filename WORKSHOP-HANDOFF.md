@@ -29,3 +29,15 @@ The hero enquiry link, the Contact menu item and the footer enquiry link lead to
 The original project contains customer testimonials, service promises and numerical performance claims that have not been independently verified. The README refers to an MIT license file but no LICENSE file exists in the source; package metadata states ISC. Resolve licensing and content rights before reuse. The dependency install reported an esbuild install-script warning; the build succeeded, and Browserslist data reported being 19 months old. Verify dependencies and decide on updates separately.
 
 Next, obtain confirmed content and contact details, then replace or remove unverified claims and implement an agreed enquiry flow. Preserve the existing working copy and record every decision, validation and commissioner acceptance. No public website deployment has been performed.
+
+## Benefits and testimonial display repair
+
+- Plan: address the commissioner's two benefit-bar reports and the obstructed testimonial portrait.
+- Do: use explicit Tailwind background classes so colours are included in the build, animate percentage bars to their displayed percentages, and replace unavailable portraits with decorative initials. Add accessible names to carousel controls.
+- Check: production build and `git diff --check` passed. Browser screenshots showed the blue and purple bars, the 50% bar at half width, and the initials avatar. The next control advanced to the second testimonial. Commissioner review is pending.
+- Act: keep the inherited benefits and testimonials flagged for factual and identity verification.
+- Standardise: the lifespan bar is decorative because its years value is not a percentage. The initials do not assert a real portrait.
+- Train: scroll through Benefits, then use the labelled testimonial controls.
+- Enforce: verify animation colours, target widths, names and carousel navigation in the browser after changes.
+- Improve: replace or remove inherited claims and testimonials once the commissioner supplies verified content.
+- Work: Codex performed the repair; no work was delegated.

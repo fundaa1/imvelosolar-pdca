@@ -7,22 +7,19 @@ const testimonials = [
         name: 'Sarah Johnson',
         role: 'Homeowner',
         content: "After Imvelo cleaned our solar panels, we saw an immediate 20% increase in energy production. Their team was professional and thorough. Highly recommended!",
-        rating: 5,
-        image: '/testimonials/sarah.jpg'
+        rating: 5
     },
     {
         name: 'Michael Thompson',
         role: 'Business Owner',
         content: "We've been using Imvelo's maintenance services for our business solar system for two years now. The difference in performance and reliability is remarkable.",
-        rating: 5,
-        image: '/testimonials/michael.jpg'
+        rating: 5
     },
     {
         name: 'Emily Rodriguez',
         role: 'Property Manager',
         content: "Regular maintenance has saved us thousands in potential repair costs. The peace of mind knowing our system is in good hands is priceless.",
-        rating: 5,
-        image: '/testimonials/emily.jpg'
+        rating: 5
     }
 ];
 
@@ -66,12 +63,11 @@ const Testimonials: React.FC = () => {
                             className="bg-gray-50 p-8 rounded-lg shadow-md"
                         >
                             <div className="flex flex-col md:flex-row items-center gap-8">
-                                <div className="w-24 h-24 rounded-full overflow-hidden">
-                                    <img
-                                        src={testimonials[currentIndex].image}
-                                        alt={testimonials[currentIndex].name}
-                                        className="w-full h-full object-cover"
-                                    />
+                                <div
+                                    aria-hidden="true"
+                                    className="w-24 h-24 shrink-0 rounded-full bg-green-100 text-green-800 flex items-center justify-center text-2xl font-bold"
+                                >
+                                    {testimonials[currentIndex].name.split(' ').map(part => part[0]).join('')}
                                 </div>
                                 <div className="flex-1">
                                     <div className="flex mb-4">
@@ -101,6 +97,7 @@ const Testimonials: React.FC = () => {
 
                     <div className="flex justify-center mt-8 space-x-4">
                         <button
+                            aria-label="Previous testimonial"
                             onClick={prevTestimonial}
                             className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
                         >
@@ -110,6 +107,8 @@ const Testimonials: React.FC = () => {
                             {testimonials.map((_, index) => (
                                 <button
                                     key={index}
+                                    aria-label={`Show testimonial ${index + 1}`}
+                                    aria-current={index === currentIndex ? "true" : undefined}
                                     onClick={() => setCurrentIndex(index)}
                                     className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex ? 'bg-green-600' : 'bg-gray-300'
                                         }`}
@@ -117,6 +116,7 @@ const Testimonials: React.FC = () => {
                             ))}
                         </div>
                         <button
+                            aria-label="Next testimonial"
                             onClick={nextTestimonial}
                             className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition-colors"
                         >
