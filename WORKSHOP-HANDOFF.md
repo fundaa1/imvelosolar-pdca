@@ -10,7 +10,7 @@
 
 Run `npm ci`, then `npm run dev -- --host 127.0.0.1 --port 3020 --strictPort`, and open the printed local address. The local preview requires the server to remain running. Run `npm run build` for a production build.
 
-The hero enquiry link, the Contact menu item and the footer enquiry link lead to the checklist. The checklist can be copied using the browser clipboard; if clipboard access fails, the page offers a manual-copy instruction. It does not submit an enquiry or book a service. Contact and booking details await confirmation. The mobile menu exposes its expanded state and closes after a navigation selection.
+The hero enquiry link, the Contact menu item and the footer enquiry link lead to the checklist. The enquiry builder prepares a selectable message from optional inputs. It can be copied using the browser clipboard; if clipboard access fails, the message remains available for manual copying. It does not submit an enquiry or book a service. Contact and booking details await confirmation. The mobile menu exposes its expanded state and closes after a navigation selection.
 
 ## PDCA-STEI cycle
 
@@ -19,7 +19,7 @@ The hero enquiry link, the Contact menu item and the footer enquiry link lead to
 - Check: `npm ci`, `npm run build` and `git diff --check` passed. In the local browser the hero link reached `#contact` and the mobile menu opened and closed after Contact was chosen. Clipboard success and fallback were not exercised; commissioner acceptance is pending.
 - Act: obtain commissioner feedback and confirmed contact and booking details before implementing a real enquiry channel.
 - Standardise: the current page prepares information locally and does not send personal data.
-- Train: use Prepare an Enquiry or the Contact menu, read the checklist, and try Copy checklist in a browser with clipboard access.
+- Train: use Prepare an Enquiry or the Contact menu, enter optional details, review the message, and try Copy message in a browser with clipboard access.
 - Enforce: build and verify desktop/mobile navigation, the clipboard success/fallback and commissioner walkthrough before acceptance.
 - Improve: verify inherited testimonials, service claims and numerical benefit claims against evidence, and confirm branding, service area and contact details before publishing.
 - Work: Codex completed the work. No work was delegated.
@@ -41,3 +41,15 @@ Next, obtain confirmed content and contact details, then replace or remove unver
 - Enforce: verify animation colours, target widths, names and carousel navigation in the browser after changes.
 - Improve: replace or remove inherited claims and testimonials once the commissioner supplies verified content.
 - Work: Codex performed the repair; no work was delegated.
+
+## Enquiry builder cycle
+
+- Plan: make the preparation step useful for a visitor describing their own system.
+- Do: add optional location, system, issue and access fields, a live selectable message, and a copy button.
+- Check: production build and whitespace check passed. In the browser, sample location and issue appeared in the message and were then cleared. Clipboard success and failure paths were not exercised; commissioner acceptance remains pending.
+- Act: confirm a real contact destination and service workflow with the commissioner before adding submission.
+- Standardise: inputs are held in page state and are not sent or stored by the app. Copying puts the prepared message on the device clipboard.
+- Train: enter the details available, review the prepared message, then copy it or select it manually.
+- Enforce: recheck live updates, copy success and fallback, navigation and privacy wording when changing the flow.
+- Improve: once confirmed, integrate an agreed contact method and review inherited claims.
+- Work: Codex implemented and checked the change. No work was delegated.

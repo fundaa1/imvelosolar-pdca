@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 import { ClipboardCheck, Copy } from 'lucide-react';
 
 const CallToAction: React.FC = () => {
-    const [copied, setCopied] = useState('');
-    const details = [
-        'System location and preferred contact details',
-        'Solar panel and inverter details, if available',
-        'What you have noticed and when it started',
-        'Any access or scheduling requirements',
-    ];
+    const [location, setLocation] = useState('');
+    const [system, setSystem] = useState('');
+    const [issue, setIssue] = useState('');
+    const [availability, setAvailability] = useState('');
+    const [copyStatus, setCopyStatus] = useState('');
 
-    const copyChecklist = async () => {
+    const message = [
+        'Solar maintenance enquiry',
+        `Location: ${location.trim() || 'Not provided'}`,
+        `System details: ${system.trim() || 'Not provided'}`,
+        `Service needed: ${issue.trim() || 'Not provided'}`,
+        `Access or scheduling: ${availability.trim() || 'Not provided'}`,
+    ].join('\n');
+
+    const copyMessage = async () => {
         try {
-            await navigator.clipboard.writeText('Solar maintenance enquiry\n' + details.map(item => '- ' + item).join('\n'));
-            setCopied('Checklist copied. Add your details before sharing it.');
+            await navigator.clipboard.writeText(message);
+            setCopyStatus('Message copied. You can paste it into your preferred contact method.');
         } catch {
-            setCopied('Copy unavailable. You can select the checklist text and copy it manually.');
+            setCopyStatus('Copy unavailable. Select the prepared message below and copy it manually.');
         }
     };
 
@@ -25,18 +31,37 @@ const CallToAction: React.FC = () => {
                 <div className="text-center mb-10">
                     <ClipboardCheck className="mx-auto text-green-700 mb-4" size={40} aria-hidden="true" />
                     <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-4">Prepare for a maintenance enquiry</h2>
-                    <p className="text-lg text-gray-700">Gather a few details to help describe your system and the service you need.</p>
+                    <p className="text-lg text-gray-700">Add the details you know and prepare a message to share when contact details are confirmed.</p>
                 </div>
                 <div className="bg-white p-8 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold text-gray-800 mb-4">Useful information to have ready</h3>
-                    <ul className="space-y-3 list-disc pl-6 text-gray-700">
-                        {details.map(detail => <li key={detail}>{detail}</li>)}
-                    </ul>
-                    <button type="button" onClick={copyChecklist} className="mt-6 inline-flex items-center gap-2 bg-green-700 text-white px-5 py-3 rounded-md hover:bg-green-800">
-                        <Copy size={18} aria-hidden="true" /> Copy checklist
+                    <p className="text-sm text-gray-600 mb-6">All fields are optional. Your details stay on this page until you copy them or leave.</p>
+                    <div className="grid md:grid-cols-2 gap-5">
+                        <label className="text-gray-800 font-semibold">
+                            System location
+                            <input value={location} onChange={event => setLocation(event.target.value)} placeholder="Town or area" className="mt-2 block w-full border border-gray-400 rounded-md px-3 py-2 font-normal" />
+                        </label>
+                        <label className="text-gray-800 font-semibold">
+                            Panel or inverter details
+                            <input value={system} onChange={event => setSystem(event.target.value)} placeholder="If known" className="mt-2 block w-full border border-gray-400 rounded-md px-3 py-2 font-normal" />
+                        </label>
+                        <label className="text-gray-800 font-semibold">
+                            Service needed or issue noticed
+                            <textarea value={issue} onChange={event => setIssue(event.target.value)} rows={3} className="mt-2 block w-full border border-gray-400 rounded-md px-3 py-2 font-normal" />
+                        </label>
+                        <label className="text-gray-800 font-semibold">
+                            Access or scheduling requirements
+                            <textarea value={availability} onChange={event => setAvailability(event.target.value)} rows={3} className="mt-2 block w-full border border-gray-400 rounded-md px-3 py-2 font-normal" />
+                        </label>
+                    </div>
+                    <label className="block mt-6 text-gray-800 font-semibold">
+                        Prepared message
+                        <textarea readOnly value={message} rows={6} className="mt-2 block w-full border border-gray-400 bg-gray-50 rounded-md px-3 py-2 font-normal" />
+                    </label>
+                    <button type="button" onClick={copyMessage} className="mt-4 inline-flex items-center gap-2 bg-green-700 text-white px-5 py-3 rounded-md hover:bg-green-800">
+                        <Copy size={18} aria-hidden="true" /> Copy message
                     </button>
-                    <p role="status" className="mt-3 text-gray-700">{copied}</p>
-                    <p className="mt-4 text-sm text-gray-600">Contact and booking details are awaiting confirmation.</p>
+                    <p role="status" className="mt-3 text-gray-700">{copyStatus}</p>
+                    <p className="mt-4 text-sm text-gray-600">Contact and booking details are awaiting confirmation. This page does not send your enquiry.</p>
                 </div>
             </div>
         </section>
