@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, Sun } from 'lucide-react';
+import { Menu, X, Sun } from 'lucide-react';
 
 const Navigation: React.FC = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -70,26 +70,21 @@ const Navigation: React.FC = () => {
                 {/* Mobile Menu Button */}
                 <div className="md:hidden">
                     <button
+                        type="button"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-menu"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="text-gray-700 hover:text-green-600 transition-colors"
                     >
                         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
-
-                {/* Call Button */}
-                <a
-                    href="tel:+27123456789"
-                    className="hidden md:flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
-                >
-                    <Phone size={18} />
-                    <span>Call Now</span>
-                </a>
             </div>
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden bg-white py-4 px-4">
+                <div id="mobile-menu" className="md:hidden bg-white py-4 px-4">
                     <div className="flex flex-col space-y-4">
                         <button
                             onClick={() => scrollToSection('services')}
@@ -112,13 +107,6 @@ const Navigation: React.FC = () => {
                         >
                             Contact
                         </button>
-                        <a
-                            href="tel:+27123456789"
-                            className="flex items-center justify-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition"
-                        >
-                            <Phone size={18} />
-                            <span>Call Now</span>
-                        </a>
                     </div>
                 </div>
             )}

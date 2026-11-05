@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
             {/* Animated Grid Background */}
             <div className="absolute inset-0 z-0 opacity-10">
                 <div className="grid grid-cols-6 grid-rows-6 gap-2 h-full w-full">
-                    {Array(36).fill().map((_, i) => (
+                    {Array(36).fill(null).map((_, i) => (
                         <motion.div
                             key={i}
                             className="grid-item bg-yellow-500 rounded-md"
@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                             href="#contact"
                             className="inline-flex items-center justify-center bg-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-md text-lg shadow-lg hover:bg-yellow-400 transition group"
                         >
-                            Schedule Maintenance Today
+                            Prepare an Enquiry
                             <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                         </a>
                     </motion.div>

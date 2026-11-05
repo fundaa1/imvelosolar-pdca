@@ -1,5 +1,7 @@
 # ImveloSolar - Solar Maintenance Services Website
 
+Workshop status, preview instructions and known limitations: [WORKSHOP-HANDOFF.md](WORKSHOP-HANDOFF.md).
+
 A modern, responsive website for ImveloSolar's professional solar maintenance services. Built with React, TypeScript, and Tailwind CSS.
 
 ## Features
